@@ -1,0 +1,86 @@
+{
+  "version": 2,
+  "dgSpecHash": "7oEqRMxMi1I=",
+  "success": false,
+  "projectFilePath": "C:\\Users\\mahat\\Downloads\\webapp_JmeterPublish\\JmeterPublish.DAL\\JmeterPublish.DAL.csproj",
+  "expectedPackageFiles": [],
+  "logs": [
+    {
+      "code": "NU1101",
+      "level": "Error",
+      "message": "Unable to find package Npgsql. No packages exist with this id in source(s): C:\\Program Files\\dotnet\\library-packs, Microsoft Visual Studio Offline Packages",
+      "projectPath": "C:\\Users\\mahat\\Downloads\\webapp_JmeterPublish\\JmeterPublish.DAL\\JmeterPublish.DAL.csproj",
+      "filePath": "C:\\Users\\mahat\\Downloads\\webapp_JmeterPublish\\JmeterPublish.DAL\\JmeterPublish.DAL.csproj",
+      "libraryId": "Npgsql",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    },
+    {
+      "code": "NU1101",
+      "level": "Error",
+      "message": "Unable to find package System.IdentityModel.Tokens.Jwt. No packages exist with this id in source(s): C:\\Program Files\\dotnet\\library-packs, Microsoft Visual Studio Offline Packages",
+      "projectPath": "C:\\Users\\mahat\\Downloads\\webapp_JmeterPublish\\JmeterPublish.DAL\\JmeterPublish.DAL.csproj",
+      "filePath": "C:\\Users\\mahat\\Downloads\\webapp_JmeterPublish\\JmeterPublish.DAL\\JmeterPublish.DAL.csproj",
+      "libraryId": "System.IdentityModel.Tokens.Jwt",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    },
+    {
+      "code": "NU1101",
+      "level": "Error",
+      "message": "Unable to find package Microsoft.AspNetCore.Mvc.NewtonsoftJson. No packages exist with this id in source(s): C:\\Program Files\\dotnet\\library-packs, Microsoft Visual Studio Offline Packages",
+      "projectPath": "C:\\Users\\mahat\\Downloads\\webapp_JmeterPublish\\JmeterPublish.DAL\\JmeterPublish.DAL.csproj",
+      "filePath": "C:\\Users\\mahat\\Downloads\\webapp_JmeterPublish\\JmeterPublish.DAL\\JmeterPublish.DAL.csproj",
+      "libraryId": "Microsoft.AspNetCore.Mvc.NewtonsoftJson",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    },
+    {
+      "code": "NU1101",
+      "level": "Error",
+      "message": "Unable to find package FluentValidation.AspNetCore. No packages exist with this id in source(s): C:\\Program Files\\dotnet\\library-packs, Microsoft Visual Studio Offline Packages",
+      "projectPath": "C:\\Users\\mahat\\Downloads\\webapp_JmeterPublish\\JmeterPublish.DAL\\JmeterPublish.DAL.csproj",
+      "filePath": "C:\\Users\\mahat\\Downloads\\webapp_JmeterPublish\\JmeterPublish.DAL\\JmeterPublish.DAL.csproj",
+      "libraryId": "FluentValidation.AspNetCore",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    },
+    {
+      "code": "NU1101",
+      "level": "Error",
+      "message": "Unable to find package Microsoft.WindowsDesktop.App.Ref. No packages exist with this id in source(s): C:\\Program Files\\dotnet\\library-packs, Microsoft Visual Studio Offline Packages",
+      "projectPath": "C:\\Users\\mahat\\Downloads\\webapp_JmeterPublish\\JmeterPublish.DAL\\JmeterPublish.DAL.csproj",
+      "filePath": "C:\\Users\\mahat\\Downloads\\webapp_JmeterPublish\\JmeterPublish.DAL\\JmeterPublish.DAL.csproj",
+      "libraryId": "Microsoft.WindowsDesktop.App.Ref",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    },
+    {
+      "code": "NU1101",
+      "level": "Error",
+      "message": "Unable to find package Microsoft.NETCore.App.Ref. No packages exist with this id in source(s): C:\\Program Files\\dotnet\\library-packs, Microsoft Visual Studio Offline Packages",
+      "projectPath": "C:\\Users\\mahat\\Downloads\\webapp_JmeterPublish\\JmeterPublish.DAL\\JmeterPublish.DAL.csproj",
+      "filePath": "C:\\Users\\mahat\\Downloads\\webapp_JmeterPublish\\JmeterPublish.DAL\\JmeterPublish.DAL.csproj",
+      "libraryId": "Microsoft.NETCore.App.Ref",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    },
+    {
+      "code": "NU1101",
+      "level": "Error",
+      "message": "Unable to find package Microsoft.AspNetCore.App.Ref. No packages exist with this id in source(s): C:\\Program Files\\dotnet\\library-packs, Microsoft Visual Studio Offline Packages",
+      "projectPath": "C:\\Users\\mahat\\Downloads\\webapp_JmeterPublish\\JmeterPublish.DAL\\JmeterPublish.DAL.csproj",
+      "filePath": "C:\\Users\\mahat\\Downloads\\webapp_JmeterPublish\\JmeterPublish.DAL\\JmeterPublish.DAL.csproj",
+      "libraryId": "Microsoft.AspNetCore.App.Ref",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    }
+  ]
+}

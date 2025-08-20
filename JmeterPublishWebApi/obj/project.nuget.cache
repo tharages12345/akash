@@ -1,0 +1,207 @@
+{
+  "version": 2,
+  "dgSpecHash": "qUMEXwho+OU=",
+  "success": false,
+  "projectFilePath": "C:\\Users\\mahat\\Downloads\\webapp_JmeterPublish\\JmeterPublishWebApi\\JmeterPublishWebApi.csproj",
+  "expectedPackageFiles": [],
+  "logs": [
+    {
+      "code": "NU1101",
+      "level": "Error",
+      "message": "Unable to find package NLog.MailKit. No packages exist with this id in source(s): C:\\Program Files\\dotnet\\library-packs, Microsoft Visual Studio Offline Packages",
+      "projectPath": "C:\\Users\\mahat\\Downloads\\webapp_JmeterPublish\\JmeterPublishWebApi\\JmeterPublishWebApi.csproj",
+      "filePath": "C:\\Users\\mahat\\Downloads\\webapp_JmeterPublish\\JmeterPublishWebApi\\JmeterPublishWebApi.csproj",
+      "libraryId": "NLog.MailKit",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    },
+    {
+      "code": "NU1101",
+      "level": "Error",
+      "message": "Unable to find package IdentityServer4.AccessTokenValidation. No packages exist with this id in source(s): C:\\Program Files\\dotnet\\library-packs, Microsoft Visual Studio Offline Packages",
+      "projectPath": "C:\\Users\\mahat\\Downloads\\webapp_JmeterPublish\\JmeterPublishWebApi\\JmeterPublishWebApi.csproj",
+      "filePath": "C:\\Users\\mahat\\Downloads\\webapp_JmeterPublish\\JmeterPublishWebApi\\JmeterPublishWebApi.csproj",
+      "libraryId": "IdentityServer4.AccessTokenValidation",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    },
+    {
+      "code": "NU1101",
+      "level": "Error",
+      "message": "Unable to find package Microsoft.AspNetCore.Mvc.NewtonsoftJson. No packages exist with this id in source(s): C:\\Program Files\\dotnet\\library-packs, Microsoft Visual Studio Offline Packages",
+      "projectPath": "C:\\Users\\mahat\\Downloads\\webapp_JmeterPublish\\JmeterPublishWebApi\\JmeterPublishWebApi.csproj",
+      "filePath": "C:\\Users\\mahat\\Downloads\\webapp_JmeterPublish\\JmeterPublishWebApi\\JmeterPublishWebApi.csproj",
+      "libraryId": "Microsoft.AspNetCore.Mvc.NewtonsoftJson",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    },
+    {
+      "code": "NU1101",
+      "level": "Error",
+      "message": "Unable to find package Swashbuckle.AspNetCore.SwaggerUi. No packages exist with this id in source(s): C:\\Program Files\\dotnet\\library-packs, Microsoft Visual Studio Offline Packages",
+      "projectPath": "C:\\Users\\mahat\\Downloads\\webapp_JmeterPublish\\JmeterPublishWebApi\\JmeterPublishWebApi.csproj",
+      "filePath": "C:\\Users\\mahat\\Downloads\\webapp_JmeterPublish\\JmeterPublishWebApi\\JmeterPublishWebApi.csproj",
+      "libraryId": "Swashbuckle.AspNetCore.SwaggerUi",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    },
+    {
+      "code": "NU1101",
+      "level": "Error",
+      "message": "Unable to find package NLog.Extensions.Logging. No packages exist with this id in source(s): C:\\Program Files\\dotnet\\library-packs, Microsoft Visual Studio Offline Packages",
+      "projectPath": "C:\\Users\\mahat\\Downloads\\webapp_JmeterPublish\\JmeterPublishWebApi\\JmeterPublishWebApi.csproj",
+      "filePath": "C:\\Users\\mahat\\Downloads\\webapp_JmeterPublish\\JmeterPublishWebApi\\JmeterPublishWebApi.csproj",
+      "libraryId": "NLog.Extensions.Logging",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    },
+    {
+      "code": "NU1101",
+      "level": "Error",
+      "message": "Unable to find package Microsoft.AspNetCore.Authentication.JwtBearer. No packages exist with this id in source(s): C:\\Program Files\\dotnet\\library-packs, Microsoft Visual Studio Offline Packages",
+      "projectPath": "C:\\Users\\mahat\\Downloads\\webapp_JmeterPublish\\JmeterPublishWebApi\\JmeterPublishWebApi.csproj",
+      "filePath": "C:\\Users\\mahat\\Downloads\\webapp_JmeterPublish\\JmeterPublishWebApi\\JmeterPublishWebApi.csproj",
+      "libraryId": "Microsoft.AspNetCore.Authentication.JwtBearer",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    },
+    {
+      "code": "NU1101",
+      "level": "Error",
+      "message": "Unable to find package Swashbuckle.AspNetCore. No packages exist with this id in source(s): C:\\Program Files\\dotnet\\library-packs, Microsoft Visual Studio Offline Packages",
+      "projectPath": "C:\\Users\\mahat\\Downloads\\webapp_JmeterPublish\\JmeterPublishWebApi\\JmeterPublishWebApi.csproj",
+      "filePath": "C:\\Users\\mahat\\Downloads\\webapp_JmeterPublish\\JmeterPublishWebApi\\JmeterPublishWebApi.csproj",
+      "libraryId": "Swashbuckle.AspNetCore",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    },
+    {
+      "code": "NU1101",
+      "level": "Error",
+      "message": "Unable to find package RestSharp. No packages exist with this id in source(s): C:\\Program Files\\dotnet\\library-packs, Microsoft Visual Studio Offline Packages",
+      "projectPath": "C:\\Users\\mahat\\Downloads\\webapp_JmeterPublish\\JmeterPublishWebApi\\JmeterPublishWebApi.csproj",
+      "filePath": "C:\\Users\\mahat\\Downloads\\webapp_JmeterPublish\\JmeterPublishWebApi\\JmeterPublishWebApi.csproj",
+      "libraryId": "RestSharp",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    },
+    {
+      "code": "NU1101",
+      "level": "Error",
+      "message": "Unable to find package NLog.Web.AspNetCore. No packages exist with this id in source(s): C:\\Program Files\\dotnet\\library-packs, Microsoft Visual Studio Offline Packages",
+      "projectPath": "C:\\Users\\mahat\\Downloads\\webapp_JmeterPublish\\JmeterPublishWebApi\\JmeterPublishWebApi.csproj",
+      "filePath": "C:\\Users\\mahat\\Downloads\\webapp_JmeterPublish\\JmeterPublishWebApi\\JmeterPublishWebApi.csproj",
+      "libraryId": "NLog.Web.AspNetCore",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    },
+    {
+      "code": "NU1101",
+      "level": "Error",
+      "message": "Unable to find package Microsoft.AspNet.WebApi.Cors. No packages exist with this id in source(s): C:\\Program Files\\dotnet\\library-packs, Microsoft Visual Studio Offline Packages",
+      "projectPath": "C:\\Users\\mahat\\Downloads\\webapp_JmeterPublish\\JmeterPublishWebApi\\JmeterPublishWebApi.csproj",
+      "filePath": "C:\\Users\\mahat\\Downloads\\webapp_JmeterPublish\\JmeterPublishWebApi\\JmeterPublishWebApi.csproj",
+      "libraryId": "Microsoft.AspNet.WebApi.Cors",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    },
+    {
+      "code": "NU1101",
+      "level": "Error",
+      "message": "Unable to find package NLog. No packages exist with this id in source(s): C:\\Program Files\\dotnet\\library-packs, Microsoft Visual Studio Offline Packages",
+      "projectPath": "C:\\Users\\mahat\\Downloads\\webapp_JmeterPublish\\JmeterPublishWebApi\\JmeterPublishWebApi.csproj",
+      "filePath": "C:\\Users\\mahat\\Downloads\\webapp_JmeterPublish\\JmeterPublishWebApi\\JmeterPublishWebApi.csproj",
+      "libraryId": "NLog",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    },
+    {
+      "code": "NU1101",
+      "level": "Error",
+      "message": "Unable to find package Npgsql. No packages exist with this id in source(s): C:\\Program Files\\dotnet\\library-packs, Microsoft Visual Studio Offline Packages",
+      "projectPath": "C:\\Users\\mahat\\Downloads\\webapp_JmeterPublish\\JmeterPublishWebApi\\JmeterPublishWebApi.csproj",
+      "filePath": "C:\\Users\\mahat\\Downloads\\webapp_JmeterPublish\\JmeterPublishWebApi\\JmeterPublishWebApi.csproj",
+      "libraryId": "Npgsql",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    },
+    {
+      "code": "NU1101",
+      "level": "Error",
+      "message": "Unable to find package System.IdentityModel.Tokens.Jwt. No packages exist with this id in source(s): C:\\Program Files\\dotnet\\library-packs, Microsoft Visual Studio Offline Packages",
+      "projectPath": "C:\\Users\\mahat\\Downloads\\webapp_JmeterPublish\\JmeterPublishWebApi\\JmeterPublishWebApi.csproj",
+      "filePath": "C:\\Users\\mahat\\Downloads\\webapp_JmeterPublish\\JmeterPublishWebApi\\JmeterPublishWebApi.csproj",
+      "libraryId": "System.IdentityModel.Tokens.Jwt",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    },
+    {
+      "code": "NU1101",
+      "level": "Error",
+      "message": "Unable to find package FluentValidation.AspNetCore. No packages exist with this id in source(s): C:\\Program Files\\dotnet\\library-packs, Microsoft Visual Studio Offline Packages",
+      "projectPath": "C:\\Users\\mahat\\Downloads\\webapp_JmeterPublish\\JmeterPublishWebApi\\JmeterPublishWebApi.csproj",
+      "filePath": "C:\\Users\\mahat\\Downloads\\webapp_JmeterPublish\\JmeterPublishWebApi\\JmeterPublishWebApi.csproj",
+      "libraryId": "FluentValidation.AspNetCore",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    },
+    {
+      "code": "NU1101",
+      "level": "Error",
+      "message": "Unable to find package Microsoft.WindowsDesktop.App.Ref. No packages exist with this id in source(s): C:\\Program Files\\dotnet\\library-packs, Microsoft Visual Studio Offline Packages",
+      "projectPath": "C:\\Users\\mahat\\Downloads\\webapp_JmeterPublish\\JmeterPublishWebApi\\JmeterPublishWebApi.csproj",
+      "filePath": "C:\\Users\\mahat\\Downloads\\webapp_JmeterPublish\\JmeterPublishWebApi\\JmeterPublishWebApi.csproj",
+      "libraryId": "Microsoft.WindowsDesktop.App.Ref",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    },
+    {
+      "code": "NU1101",
+      "level": "Error",
+      "message": "Unable to find package Microsoft.NETCore.App.Ref. No packages exist with this id in source(s): C:\\Program Files\\dotnet\\library-packs, Microsoft Visual Studio Offline Packages",
+      "projectPath": "C:\\Users\\mahat\\Downloads\\webapp_JmeterPublish\\JmeterPublishWebApi\\JmeterPublishWebApi.csproj",
+      "filePath": "C:\\Users\\mahat\\Downloads\\webapp_JmeterPublish\\JmeterPublishWebApi\\JmeterPublishWebApi.csproj",
+      "libraryId": "Microsoft.NETCore.App.Ref",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    },
+    {
+      "code": "NU1101",
+      "level": "Error",
+      "message": "Unable to find package Microsoft.AspNetCore.App.Ref. No packages exist with this id in source(s): C:\\Program Files\\dotnet\\library-packs, Microsoft Visual Studio Offline Packages",
+      "projectPath": "C:\\Users\\mahat\\Downloads\\webapp_JmeterPublish\\JmeterPublishWebApi\\JmeterPublishWebApi.csproj",
+      "filePath": "C:\\Users\\mahat\\Downloads\\webapp_JmeterPublish\\JmeterPublishWebApi\\JmeterPublishWebApi.csproj",
+      "libraryId": "Microsoft.AspNetCore.App.Ref",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    },
+    {
+      "code": "NU1101",
+      "level": "Error",
+      "message": "Unable to find package Microsoft.NETCore.App.Host.win-x64. No packages exist with this id in source(s): C:\\Program Files\\dotnet\\library-packs, Microsoft Visual Studio Offline Packages",
+      "projectPath": "C:\\Users\\mahat\\Downloads\\webapp_JmeterPublish\\JmeterPublishWebApi\\JmeterPublishWebApi.csproj",
+      "filePath": "C:\\Users\\mahat\\Downloads\\webapp_JmeterPublish\\JmeterPublishWebApi\\JmeterPublishWebApi.csproj",
+      "libraryId": "Microsoft.NETCore.App.Host.win-x64",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    }
+  ]
+}
