@@ -1,0 +1,1551 @@
+<!-- This code generated from Deliveries Powered by Mahat, Source Machine : 15.206.208.9 , Build Number : Build 14092021 #2021-09-014(Updated on 29102021 12:49) on 08/17/2023 06:22:48 -->
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+@model JmeterPublish.Models.RoleAuthorizationModel
+@{
+    ViewData["Title"] = "Manage Role Authorizations";
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+
+@using (Html.BeginForm("Update_RoleAuthorization", "RoleAuthorization", FormMethod.Post, new { enctype = "multipart/form-data", @id = "formId" }))
+{
+
+    <div class="card card-block contCard">
+        <!--Form_Main_Card-->
+        <div class="mobileHeader">
+            <!--form_card_header-->
+            <div class="row">
+                <div class="col-sm-12 col-xs-12">
+                    <h4 class="formHdr">Add Modify Role Authorizations</h4>
+                </div>
+            </div>
+        </div><!--form_card_header-->
+        <!--form_error_display-->
+        @if (ViewData["message"] != null)
+        {
+            <div class="row">
+                <div class="col-sm-12 col-xs-12">
+                    <div class="alert alert-danger alert-dismissible ">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">x</span>
+                        </button>
+                        Info :  @ViewData["message"]
+                    </div>
+                </div>
+            </div>
+        }
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="user-role-wrapper">
+                                <div class="search_wrapper">
+                                    <div class="srch-bar">
+                                        <input type="text" class="form-control dt-global-search" placeholder="Search..." style="width: fit-content;">
+                                    </div>
+
+                                </div>
+                                <div class="user-role-right">
+
+                                    <div class="userrole_craftmyapp_container">
+                                        <div>
+                                            <div class="form-group form-group--float-above my-3">
+                                                <header class="role-title" style="display: none">Role</header>
+                                                <select name="userrole" id="userrole" class="form-control select2 select2-list  required "></select>
+
+                                            </div>
+                                            @Html.ValidationMessageFor(model => model.userrole)
+                                            <label id="userrole-error" class="help-block" style="display: none" for="userrole"></label>
+                                        </div>
+                                    </div>
+                                    <div class="add_role">
+                                        <button type="button" class="btn btn-rounded add-row-btn " id="add_role">Add Roles</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" id="responseContainer" hidden style="display:none;">
+            <div class="col-sm-12 col-xs-12">
+                <div class="alert alert-danger alert-dismissible" id="response-err">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">x</span>
+                    </button>
+                </div>
+                <div class="alert alert-success alert-dismissible" id="response-success">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">x</span>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+
+        <!--form_error_display-->
+        <div class="">
+            <!--form_inner_card-->
+            <div class="card-block">
+                <!--form_inner_card_block-->
+                @Html.HiddenFor(m => m.RoleAuthorizationid)
+
+
+
+
+
+                <div class="row">
+                    <!--field_container_row-->
+                    <!--fieldsStartsHere-->
+                    <div id="addroles">
+
+                        <div class="modal addrolemodal" tabindex="-1" role="dialog" id="role_popup">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <header class="modal-title">Add Role</header>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col-sm-4 col-xs-12 p-2 Rolename_craftmyapp_container">
+                                                <div>
+                                                    <div class="form-group">
+                                                        <label>Role Name <b class="iconRed">*</b></label>
+                                                        <input type="text" name="rolename" id="rolename" maxlength="128" class="form-control form-control-lg required" required>
+                                                        @*
+                                                    *@
+                                                        <div class="rolename-error" role="alert" hidden style="display:none;">
+                                                            <div class="a-box-inner a-alert-container">
+                                                                <div class="rolename-error-content">
+                                                                    Rolename cannot be empty
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4 col-xs-12 p-2 Rolegroupname_craftmyapp_container">
+                                                <div>
+                                                    <div class="form-group">
+                                                        <label>Role GroupName<b class="iconRed">*</b></label>
+                                                        <select name="rolegroupname" id="rolegroupname" class="form-control form-control-lg required">
+                                                            <option value="intermediate">Intermediate</option>
+                                                            <option value="root">Root</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4 col-xs-12 p-2 Roleparentname_craftmyapp_container">
+                                                <div>
+                                                    <div class="form-group">
+                                                        <label>Role ParentName <b class="iconRed">*</b></label>
+                                                        <select name="parentname" id="parentname" class="form-control form-control-lg">
+                                                            <!-- Options will be populated here -->
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4 col-xs-12 p-2 Roleparentname_craftmyapp_container">
+                                                <div>
+                                                    <div class="form-group">
+                                                        <label>Clone</label>
+                                                        <select name="clone" id="clone" class="form-control form-control-lg">
+                                                            <!-- Options will be populated here -->
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" id="btn_save" class="btn btn-primary">Save Role</button>
+
+                                        <button type="button" class="btn btn-primary " id="btn_close" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <script>
+
+                            function fill_userrole() {
+                                $.ajax({
+                                    url: '@Url.Action("get_userrole")',
+                                    dataType: 'json',
+
+                                    success: function (data) {
+
+                                        var ddltarget_userrole = "#userrole"
+                                        $(ddltarget_userrole).empty();
+
+
+                                        $.each(data, function (index, optionDataInner) {
+
+
+                                            if (struserrole == optionDataInner.rolename) {
+
+                                                $(ddltarget_userrole).append('<option selected value="' + optionDataInner.rolename + '">' + optionDataInner.rolename + '</option>')
+                                                fill_authorization();
+                                            }
+
+                                            else {
+                                                $(ddltarget_userrole).append('<option  value="' + optionDataInner.rolename + '">' + optionDataInner.rolename + '</option>')
+
+                                            }
+                                            if (index == 0 && struserrole == '')
+                                                fill_authorization();
+
+
+
+                                        });
+                                        var ddltarget_clone = "#clone"
+
+
+                                        $(ddltarget_clone).empty();
+                                        $(ddltarget_clone).append('<option value="">choose</option>')
+
+
+                                        $.each(data, function (index, optionDataInner) {
+                                            
+
+                                            if (struserrole == optionDataInner.rolename) {
+                                                $(ddltarget_clone).append('<option  value="' + optionDataInner.rolename + '">' + optionDataInner.rolename + '</option>')
+
+                                            }
+
+                                            else {
+                                                $(ddltarget_clone).append('<option  value="' + optionDataInner.rolename + '">' + optionDataInner.rolename + '</option>')
+
+                                            }
+
+
+                                        });
+
+
+
+
+
+                                    },
+                                    error: function (jqXHR, textStatus, errorThrown) {
+                                        if (JSON.stringify(jqXHR.responseText) == "\"API Authorization failed\"" || jqXHR.responseJSON.error == "Failed to negotiate with server") {
+                                            swal({
+                                                title: 'Failed!',
+                                                text: (jqXHR.responseJSON.error ? jqXHR.responseJSON.error : jqXHR.responseText),
+                                                type: 'error',
+                                                buttonsStyling: false,
+                                                confirmButtonClass: 'btn btn-primary',
+                                                allowOutsideClick: false
+                                            }).then(function () {
+                                                window.location = "@Url.Action("AuthorizationFailed", "users")"
+                                            })
+                                        }
+                                        else {
+                                            swal({
+                                                title: 'Contact Administrator !',
+                                                text: (jqXHR.responseJSON.error ? jqXHR.responseJSON.error : jqXHR.responseText),
+                                                type: 'error',
+                                                buttonsStyling: false,
+                                                confirmButtonClass: 'btn btn-primary'
+                                            })
+                                        }
+                                    }
+                                })
+                            }
+                        </script>
+                        <script>
+                            var cloneval = "";
+                        </script>
+                        <script>
+                            $(document).ready(function () {
+
+
+                                $('#btn_save').click(function () {
+                                    var rolenameValue = $('#rolename').val();
+                                    var clonenameValue = $('#clone').val();
+                                    struserrole = rolenameValue;
+                                    if (rolenameValue.trim() == "") {
+                                        var errormsg = $('.rolename-error');
+
+                                        errormsg.css('display', 'block');
+                                    }
+                                    else {
+                                        var errormsg = $('.rolename-error');
+                                        errormsg.css('display', 'none');
+                                        var formdata = new FormData();
+                                        formdata.append("rolename", $('#rolename').val())
+                                        formdata.append("rolegroupname", $('#rolegroupname').val())
+                                        formdata.append("parentname", $('#parentname').val())
+                                        formdata.append("clone", $('#clone').val())
+
+
+
+                                        $.ajax({
+                                            url: '@Url.Action("Add_Role")',
+                                            type: 'POST',
+                                            enctype: 'multipart/form-data',
+                                            processData: false,
+                                            contentType: false,
+                                            cache: false,
+
+                                            data: formdata,
+                                            success: function (data) {
+                                                $('#role_popup').hide();
+
+                                                $('#response-err').hide();
+                                                $('#response-success').hide();
+
+                                                var alertRow = $('#responseContainer');
+                                                alertRow.css('display', 'block');
+
+
+                                                var responseText = data.toLowerCase();
+                                                if (responseText.includes("success")) {
+                                                    $('#response-success').html(data).show();
+                                                    $('#response-success').prepend(
+                                                        '<button type="button" class="close" data-dismiss="alert" aria-label="Close">' +
+                                                        '<span aria-hidden="true">x</span>' +
+                                                        '</button>'
+
+                                                    )
+                                                } else {
+                                                    $('#response-err').html(data).show();
+                                                    $('#response-err').prepend(
+                                                        '<button type="button" class="close" data-dismiss="alert" aria-label="Close">' +
+                                                        '<span aria-hidden="true">x</span>' +
+                                                        '</button>'
+                                                    )
+                                                }
+                                                fill_userrole();
+                                            },
+                                            error: function (jqXHR, textStatus, errorThrown) {
+                                                if (JSON.stringify(jqXHR.responseText) == "\"API Authorization failed\"" || jqXHR.responseJSON.error == "Failed to negotiate with server") {
+                                                    swal({
+                                                        title: 'Failed!',
+                                                        text: (jqXHR.responseJSON.error ? jqXHR.responseJSON.error : jqXHR.responseText),
+                                                        type: 'error',
+                                                        buttonsStyling: false,
+                                                        confirmButtonClass: 'btn btn-primary',
+                                                        allowOutsideClick: false
+                                                    }).then(function () {
+                                                        window.location = "/RolesAuthorization/Admin/users/AuthorizationFailed"
+                                                    })
+                                                }
+                                                else {
+                                                    swal({
+                                                        title: 'Contact Administrator !',
+                                                        text: (jqXHR.responseJSON.error ? jqXHR.responseJSON.error : jqXHR.responseText),
+                                                        type: 'error',
+                                                        buttonsStyling: false,
+                                                        confirmButtonClass: 'btn btn-primary'
+                                                    })
+                                                }
+                                            }
+                                        })
+                                    }
+                                })
+                                $('#btn_close').click(function () {
+                                    var errormsg = $('.rolename-error');
+                                    errormsg.css('display', 'none');
+                                    clearaddedrolles();
+                                    $('#addroles').hide();
+                                    $('#role_popup').hide();
+
+                                })
+                            })
+
+                        </script>
+                        <script>
+
+                            $(document).ready(function () {
+                                $('body').on('click', '#add_role', function () {
+                                    clearaddedrolles();
+                                    $('#addroles').show();
+                                    $('#role_popup').show();
+                                })
+
+
+
+
+                            })
+
+                            function clearaddedrolles() {
+                                $('#rolename').val('')
+                                $('#Rolegroupname').val('')
+                                $('#Roleparentname').val('')
+                            }
+                        </script>
+                        <script>
+                            function fill_parentname() {
+
+                                $.ajax({
+                                    url: '@Url.Action("get_parentname")',
+                                    dataType: 'json',
+                                    method: 'GET',
+                                    success: function (data) {
+
+
+                                        var dropdown = $('#parentname');
+                                        var selectedvalue = $('#parentname').val();
+                                        $.each(data, function (index, item) {
+                                            var optionValue = item.pvar_parentname; // Extract the property value
+
+                                            dropdown.append($('<option>').text(optionValue).val(optionValue));
+
+                                        });
+
+
+
+                                    },
+                                    error: function (jqXHR, textStatus, errorThrown) {
+                                        if (JSON.stringify(jqXHR.responseText) == "\"API Authorization failed\"" || jqXHR.responseJSON.error == "Failed to negotiate with server") {
+                                            swal({
+                                                title: 'Failed!',
+                                                text: (jqXHR.responseJSON.error ? jqXHR.responseJSON.error : jqXHR.responseText),
+                                                type: 'error',
+                                                buttonsStyling: false,
+                                                confirmButtonClass: 'btn btn-primary',
+                                                allowOutsideClick: false
+                                            }).then(function () {
+                                                window.location = "@Url.Action("AuthorizationFailed", "users")"
+                                            })
+                                        }
+                                        else {
+                                            swal({
+                                                title: 'Contact Administrator !',
+                                                text: (jqXHR.responseJSON.error ? jqXHR.responseJSON.error : jqXHR.responseText),
+                                                type: 'error',
+                                                buttonsStyling: false,
+                                                confirmButtonClass: 'btn btn-primary'
+                                            })
+                                        }
+                                    }
+                                })
+                            }
+                        </script>
+
+
+
+
+                    </div>
+                    <div class="col-sm-12 col-xs-12 ">
+                        <div>
+                            <div class="card-body p-0 form-elements-group-container fluent-card-body">
+                                <div id="roleauthorizedContainer" class="roleauthorizedContainer">
+                                </div>
+                                <div class="search-err" style="display:none">No Matching Entity Found</div>
+
+                            </div>
+                        </div>
+                    </div><!--Dependent Role Authorized Containder Block-->
+
+                    <script>
+                        function fill_authorization() {
+                            $('.page-loader__spinner').css('display', 'block');
+
+                            selectedval = $("#userrole").val();
+                            console.log(selectedval)
+                            $.ajax({
+                                url: '@Url.Action("prefill_RoleAuthorization_roleauthorized")',
+                                dataType: 'json',
+                                data: { "userrole": selectedval },
+                                success: function (data) {
+
+                                    var resultSet = data;
+                                    $("#roleauthorizedContainer").empty()
+                                    $.each(resultSet, function (key, obj) {
+
+                                        var selectedValue = selectedval;
+                                        var viewActionRolesValue = obj.viewactionroles ? obj.viewactionroles : '';
+                                        var flag = 0;
+
+                                        if (viewActionRolesValue.includes("," + selectedValue + ",")) {
+                                            flag = 1;
+
+                                            var viewActionRolesValue = obj.viewactionroles ? obj.viewactionroles.replace(/^,|,$/g, '') : '';
+
+
+                                        } else {
+
+                                        }
+
+                                        var index = Math.floor(Math.random() * (100000 - 1 + 1) + 57);
+                                        var containerId = 'roleauthorized' + (obj.featuregroup ? obj.featuregroup.replace(/\s+/g, '') : '');
+
+
+                                        var existingContainer = $('#' + containerId);
+
+                                        var cardbodyId = 'RoleContainer' + (obj.controllername ? obj.controllername : '');
+                                        var existingCardBody = $('#' + cardbodyId);
+
+
+                                        var authorized = '<input type="checkbox" name = "authorized' + index + '" id = "authorized' + index + '" class = "authorizedCheckbox " /> ';
+
+
+                                        if (flag == 1) {
+                                            var authorized = '<input type="checkbox" name = "authorized' + index + '" id = "authorized' + index + '" class = "authorizedCheckbox " checked/> ';
+                                        }
+                                        if (existingContainer.length === 0 && existingCardBody.length === 0) {
+                                            $("#roleauthorizedContainer").append(
+                                                '<div class="row m-t-10  dependentContainerBorder showthelables" id="roleauthorized' + (obj.featuregroup ? obj.featuregroup.replace(/\s+/g, '') : '') + '">' +
+
+                                                '<div class="col-sm-12 card card card-blue cma_dependent_band" id="allcardbody-container' + (obj.featuregroup ? obj.featuregroup.replace(/\s+/g, '') : '') + '" ><div class="card-head mahat-roleauthcard-head"><header class="searchable-header" >' + (obj.featuregroup ? obj.featuregroup : '') + '</header>' +
+
+                                                '<div><header class="sel-btn"><button type="button" class = "accordian roleaccordian" id="roleaccordian' + (obj.featuregroup ? obj.featuregroup.replace(/\s+/g, '') : '') + '"><span class="fa fa-angle-up" id="minus" ></span><span class="fa fa-angle-down" id ="plus" style="display:none"></span><span class= "plustext" id ="plustext" style="display:none"> Show</span><span class= "minustext" id ="minustext" > Hide</span></button></header>' +
+
+                                                '<header class="sel-all roleauthsel-all" >Select All<input type="checkbox" name="authorized' + (obj.featuregroup ? obj.featuregroup.replace(/\s+/g, '') : '') + '" id="authorized' + (obj.featuregroup ? obj.featuregroup.replace(/\s+/g, '') : '') + '" class="selectallCheckbox  " ></header></div>' +
+
+
+
+                                                '</div>' + '<div class="card-body" id = "card-body' + (obj.controllername ? obj.controllername : '') + '" > ' +
+                                                '<div id="RoleContainer' + (obj.controllername ? obj.controllername : '') + '" class="RoleContainer">' +
+                                                '<div class="row m-t-10 roleauthorized_ dependentContainerBorder showthelables" id="roleauthorized' + index + '">' +
+
+                                                '<div class="col-sm-2 col-xs-12 p-2 roleauthorized_craftmyapp_container" style="display:none">' +
+                                                '<div>' +
+                                                '<div class="form-group" >' +
+                                                '<label>Role Authorization id</label>' +
+                                                '<input value="' + (obj.roleauthorized ? obj.roleauthorizationid : '') + '" name="roleauthorizationid' + index + '" id="roleauthorizationid' + index + '"  type="connection_prefilled"  maxlength="256" class="roleauthorizationid form-control--active form-control form-control-lg " />' +
+
+                                                '</div>' +
+
+                                                '</div>' +
+                                                '</div>' +
+
+                                                '<div class="col-sm-2 col-xs-12 p-2 roleauthorized_craftmyapp_container" style="display:none">' +
+                                                '<div>' +
+                                                '<div class="form-group" >' +
+                                                '<label>Role Authorized</label>' +
+                                                '<input value="' + (obj.roleauthorized ? obj.roleauthorized : '') + '" name="roleauthorized' + index + '" id="roleauthorized' + index + '"  type="connection_prefilled"  maxlength="256" class="roleauthorized form-control--active form-control form-control-lg " />' +
+
+                                                '</div>' +
+
+                                                '</div>' +
+                                                '</div>' +
+
+                                                //'<div class="col-sm-12 card card card-blue cma_dependent_band" ><div class="card-head" ><header>' + (obj.controllername ? obj.controllername : '') + '</header></div>' + '<div class="card-body" id = "card-body' + (obj.controllername ? obj.controllername : '') + '"> ' +
+                                                '<div class="col-sm-2 col-xs-12 p-2 controllername_craftmyapp_container" hidden>' +
+                                                '<div>' +
+                                                '<div class="form-group" >' +
+                                                '<label>Entity Name</label>' +
+                                                '<input value="' + (obj.controllername ? obj.controllername : '') + '" name="controllername' + index + '" id="controllername' + index + '"  type="text"  maxlength="128" class="controllername form-control--active form-control form-control-lg " />' +
+
+                                                '</div>' +
+
+                                                '</div>' +
+                                                '</div>' +
+                                                '<div class="col-sm-2 col-xs-12 p-2 controllername_craftmyapp_container" hidden>' +
+                                                '<div>' +
+                                                '<div class="form-group" >' +
+                                                '<label>Entity Name</label>' +
+                                                '<input value="' + (obj.controllername ? obj.controllername : '') + '" name="controllername' + index + '" id="controllernamegroup' + index + '"  type="text"  maxlength="128" class="controllername form-control--active form-control form-control-lg " />' +
+
+                                                '</div>' +
+
+                                                '</div>' +
+                                                '</div>' +
+                                                '<div class="col-sm-3 col-xs-12 p-2 actionname_craftmyapp_container" hidden>' +
+                                                '<div>' +
+                                                '<div class="form-group" >' +
+                                                '<label class="action-name-label">Action Name</label>' +
+                                                '<input value="' + (obj.actionname ? obj.actionname : '') + '" name="actionname' + index + '" id="actionname' + index + '"  type="text"  maxlength="128" class="actionname form-control--active form-control form-control-lg " />' +
+
+                                                '</div>' +
+
+                                                '</div>' +
+                                                '</div>' +
+                                                '<div class="col-sm-2 col-xs-12 p-2 actionmethodname_craftmyapp_container" hidden>' +
+                                                '<div>' +
+                                                '<div class="form-group" >' +
+                                                '<label>Action Method Name</label>' +
+                                                '<input value="' + (obj.actionmethodname ? obj.actionmethodname : '') + '" name="actionmethodname' + index + '" id="actionmethodname' + index + '"  type="text"  maxlength="128" class="actionmethodname form-control--active form-control form-control-lg " />' +
+
+                                                '</div>' +
+
+                                                '</div>' +
+                                                '</div>' +
+                                                '<div class="col-sm-2 col-xs-12 p-2 viewname_craftmyapp_container" hidden>' +
+                                                '<div>' +
+                                                '<div class="form-group" >' +
+                                                '<label>View Name</label>' +
+                                                '<input value="' + (obj.viewname ? obj.viewname : '') + '" name="viewname' + index + '" id="viewname' + index + '"  type="text"  maxlength="128" class="viewname form-control--active form-control form-control-lg " />' +
+
+                                                '</div>' +
+
+                                                '</div>' +
+                                                '</div>' +
+                                                '<div class="user-check">' +
+                                                '<div class="col-sm-6 col-xs-12 p-4 authorized_craftmyapp_container">' +
+                                                '<div>' +
+
+                                                //'<label>Authorized</label>' +
+                                                '<div class="form-group">' +
+                                                '<div>' +
+                                                '<label>' +
+                                                authorized +
+                                                //'<span class="slider round"></span>' +
+                                                '</label>' +
+
+                                                '</div>' +
+
+                                                '</div>' +
+                                                '</div>' +
+                                                '</div>' +
+
+                                                '<div class="col-sm-6 col-xs-12 p-2 actiondisplayname_craftmyapp_container">' +
+                                                '<div>' +
+                                                '<div class="form-group" >' +
+                                                '<label value="' + (obj.actiondisplayname ? obj.actiondisplayname : '') + '" name="actiondisplayname' + index + '" id="actiondisplayname' + index + '"  type="text"  maxlength="128" class="actiondisplayname form-control--active form-control-lg  "readonly >' + (obj.actiondisplayname ? obj.actiondisplayname : '') + '</label>' +
+
+                                                '</div>' +
+
+                                                '</div>' +
+                                                '</div>' +
+                                                '</div>' +
+                                                '<div class="col-sm-3 col-xs-12 p-2 viewactionroles_craftmyapp_container" hidden>' +
+                                                '<div>' +
+                                                '<div class="form-group" >' +
+                                                '<label  class="view-action-role">View Action Roles</label>' +
+                                                '<input value="' + (obj.viewactionroles ? obj.viewactionroles.replace(/^,|,$/g, '') : '') + '" name="viewactionroles' + index + '" id="viewactionroles' + index + '"  type="text"  maxlength="128" class="viewactionroles form-control--active form-control form-control-lg " />' +
+
+                                                '</div>' +
+
+                                                '</div>' +
+                                                '</div>' +
+
+                                                '</div>' +
+                                                '</div>' +
+
+                                                '</div></div>'
+                                            );
+                                        }
+                                        else if (existingContainer.length != 0 && existingCardBody.length === 0) {
+                                            var containerId1 = 'allcardbody-container' + (obj.featuregroup ? obj.featuregroup.replace(/\s+/g, '') : '');
+
+                                            var existingContainer1 = $('#' + containerId1);
+                                            $(existingContainer1).append(
+                                                '<div class="card-body" id = "card-body' + (obj.controllername ? obj.controllername : '') + '"> ' +
+                                                '<div id="RoleContainer' + (obj.controllername ? obj.controllername : '') + '" class="RoleContainer">' +
+                                                '<div class="row m-t-10 roleauthorized_ dependentContainerBorder showthelables" id="roleauthorized' + index + '">' +
+
+                                                '<div class="col-sm-2 col-xs-12 p-2 roleauthorized_craftmyapp_container" hidden>' +
+                                                '<div>' +
+                                                '<div class="form-group" >' +
+                                                '<label>Role Authorization id</label>' +
+                                                '<input value="' + (obj.roleauthorized ? obj.roleauthorizationid : '') + '" name="roleauthorizationid' + index + '" id="roleauthorizationid' + index + '"  type="connection_prefilled"  maxlength="256" class="roleauthorizationid form-control--active form-control form-control-lg " />' +
+
+                                                '</div>' +
+
+                                                '</div>' +
+                                                '</div>' +
+
+                                                '<div class="col-sm-2 col-xs-12 p-2 roleauthorized_craftmyapp_container" hidden>' +
+                                                '<div>' +
+                                                '<div class="form-group" >' +
+                                                '<label>Role Authorized</label>' +
+                                                '<input value="' + (obj.roleauthorized ? obj.roleauthorized : '') + '" name="roleauthorized' + index + '" id="roleauthorized' + index + '"  type="connection_prefilled"  maxlength="256" class="roleauthorized form-control--active form-control form-control-lg " />' +
+
+                                                '</div>' +
+
+                                                '</div>' +
+                                                '</div>' +
+                                                '<div class="col-sm-2 col-xs-12 p-2 controllername_craftmyapp_container" hidden>' +
+                                                '<div>' +
+                                                '<div class="form-group" >' +
+                                                '<label>Entity Name</label>' +
+                                                '<input value="' + (obj.controllername ? obj.controllername : '') + '" name="controllername' + index + '" id="controllername' + index + '"  type="text"  maxlength="128" class="controllername form-control--active form-control form-control-lg " />' +
+
+                                                '</div>' +
+
+                                                '</div>' +
+                                                '</div>' +
+                                                '<div class="col-sm-2 col-xs-12 p-2 controllername_craftmyapp_container" hidden>' +
+                                                '<div>' +
+                                                '<div class="form-group" >' +
+                                                '<label>Entity Name</label>' +
+                                                '<input value="' + (obj.controllername ? obj.controllername : '') + '" name="controllername' + index + '" id="controllernamegroup' + index + '"  type="text"  maxlength="128" class="controllername form-control--active form-control form-control-lg " />' +
+
+                                                '</div>' +
+
+                                                '</div>' +
+                                                '</div>' +
+                                                '<div class="col-sm-3 col-xs-12 p-2 actionname_craftmyapp_container" hidden>' +
+                                                '<div>' +
+                                                '<div class="form-group" >' +
+                                                '<label class="action-name-label">Action Name</label>' +
+                                                '<input value="' + (obj.actionname ? obj.actionname : '') + '" name="actionname' + index + '" id="actionname' + index + '"  type="text"  maxlength="128" class="actionname form-control--active form-control form-control-lg " />' +
+
+                                                '</div>' +
+
+                                                '</div>' +
+                                                '</div>' +
+                                                '<div class="col-sm-2 col-xs-12 p-2 actionmethodname_craftmyapp_container" hidden>' +
+                                                '<div>' +
+                                                '<div class="form-group" >' +
+                                                '<label>Action Method Name</label>' +
+                                                '<input value="' + (obj.actionmethodname ? obj.actionmethodname : '') + '" name="actionmethodname' + index + '" id="actionmethodname' + index + '"  type="text"  maxlength="128" class="actionmethodname form-control--active form-control form-control-lg " />' +
+
+                                                '</div>' +
+
+                                                '</div>' +
+                                                '</div>' +
+                                                '<div class="col-sm-2 col-xs-12 p-2 viewname_craftmyapp_container" hidden>' +
+                                                '<div>' +
+                                                '<div class="form-group" >' +
+                                                '<label>View Name</label>' +
+                                                '<input value="' + (obj.viewname ? obj.viewname : '') + '" name="viewname' + index + '" id="viewname' + index + '"  type="text"  maxlength="128" class="viewname form-control--active form-control form-control-lg " />' +
+
+                                                '</div>' +
+
+                                                '</div>' +
+                                                '</div>' +
+                                                '<div class="user-check">' +
+                                                '<div class="col-sm-6 col-xs-12 p-4 authorized_craftmyapp_container">' +
+                                                '<div>' +
+
+                                                //'<label>Authorized</label>' +
+                                                '<div class="form-group">' +
+                                                '<div>' +
+                                                '<label>' +
+                                                authorized +
+                                                //'<span class="slider round"></span>' +
+                                                '</label>' +
+
+                                                '</div>' +
+
+                                                '</div>' +
+                                                '</div>' +
+                                                '</div>' +
+                                                '<div class="col-sm-6 col-xs-12 p-2 actiondisplayname_craftmyapp_container">' +
+                                                '<div>' +
+                                                '<div class="form-group" >' +
+                                                '<label value="' + (obj.actiondisplayname ? obj.actiondisplayname : '') + '" name="actiondisplayname' + index + '" id="actiondisplayname' + index + '"  type="text"  maxlength="128" class="actiondisplayname form-control--active form-control-lg  "readonly >' + (obj.actiondisplayname ? obj.actiondisplayname : '') + '</label>' +
+
+                                                '</div>' +
+
+                                                '</div>' +
+                                                '</div>' +
+                                                '</div>' +
+                                                '<div class="col-sm-3 col-xs-12 p-2 viewactionroles_craftmyapp_container" hidden>' +
+                                                '<div>' +
+                                                '<div class="form-group" >' +
+                                                '<label  class="view-action-role">View Action Roles</label>' +
+                                                '<input value="' + (obj.viewactionroles ? obj.viewactionroles.replace(/^,|,$/g, '') : '') + '" name="viewactionroles' + index + '" id="viewactionroles' + index + '"  type="text"  maxlength="128" class="viewactionroles form-control--active form-control form-control-lg " />' +
+
+                                                '</div>' +
+
+                                                '</div>' +
+                                                '</div>' +
+
+                                                '</div>' +
+                                                '</div>' +
+
+                                                '</div></div>'
+                                            );
+                                        }
+                                        else {
+                                            $(existingCardBody).append(
+                                                '<div class="row m-t-10 roleauthorized_ dependentContainerBorder showthelables" id="roleauthorized' + index + '">' +
+
+                                                '<div class="col-sm-2 col-xs-12 p-2 roleauthorized_craftmyapp_container" hidden>' +
+                                                '<div>' +
+                                                '<div class="form-group" >' +
+                                                '<label>Role Authorization id</label>' +
+                                                '<input value="' + (obj.roleauthorized ? obj.roleauthorizationid : '') + '" name="roleauthorizationid' + index + '" id="roleauthorizationid' + index + '"  type="connection_prefilled"  maxlength="256" class="roleauthorizationid form-control--active form-control form-control-lg " />' +
+
+                                                '</div>' +
+
+                                                '</div>' +
+                                                '</div>' +
+                                                '<div class="col-sm-2 col-xs-12 p-2 roleauthorized_craftmyapp_container" hidden>' +
+                                                '<div>' +
+                                                '<div class="form-group" >' +
+                                                '<label>Role Authorized</label>' +
+                                                '<input value="' + (obj.roleauthorized ? obj.roleauthorized : '') + '" name="roleauthorized' + index + '" id="roleauthorized' + index + '"  type="connection_prefilled"  maxlength="256" class="roleauthorized form-control--active form-control form-control-lg " />' +
+
+                                                '</div>' +
+
+                                                '</div>' +
+                                                '</div>' +
+                                                '<div class="col-sm-2 col-xs-12 p-2 controllername_craftmyapp_container" hidden> ' +
+                                                '<div>' +
+                                                '<div class="form-group" >' +
+                                                '<label>Entity Name</label>' +
+                                                '<input value="' + (obj.controllername ? obj.controllername : '') + '" name="controllername' + index + '" id="controllername' + index + '"  type="text"  maxlength="128" class="controllername form-control--active form-control form-control-lg " />' +
+
+                                                '</div>' +
+
+                                                '</div>' +
+                                                '</div>' +
+                                                '<div class="col-sm-2 col-xs-12 p-2 controllername_craftmyapp_container" hidden> ' +
+                                                '<div>' +
+                                                '<div class="form-group" >' +
+                                                '<label>Entity Name</label>' +
+                                                '<input value="' + (obj.controllername ? obj.controllername : '') + '" name="controllername' + index + '" id="controllernamegroup' + index + '"  type="text"  maxlength="128" class="controllername form-control--active form-control form-control-lg " />' +
+
+                                                '</div>' +
+
+                                                '</div>' +
+                                                '</div>' +
+                                                '<div class="col-sm-3 col-xs-12 p-2 actionname_craftmyapp_container" hidden>' +
+                                                '<div>' +
+                                                '<div class="form-group" >' +
+                                                '<label class="action-name-label">Action Name</label>' +
+                                                '<input value="' + (obj.actionname ? obj.actionname : '') + '" name="actionname' + index + '" id="actionname' + index + '"  type="text"  maxlength="128" class="actionname form-control--active form-control form-control-lg " />' +
+
+                                                '</div>' +
+
+                                                '</div>' +
+                                                '</div>' +
+                                                '<div class="col-sm-2 col-xs-12 p-2 actionmethodname_craftmyapp_container" hidden>' +
+                                                '<div>' +
+                                                '<div class="form-group" >' +
+                                                '<label>Action Method Name</label>' +
+                                                '<input value="' + (obj.actionmethodname ? obj.actionmethodname : '') + '" name="actionmethodname' + index + '" id="actionmethodname' + index + '"  type="text"  maxlength="128" class="actionmethodname form-control--active form-control form-control-lg " />' +
+
+                                                '</div>' +
+
+                                                '</div>' +
+                                                '</div>' +
+                                                '<div class="col-sm-2 col-xs-12 p-2 viewname_craftmyapp_container" hidden>' +
+                                                '<div>' +
+                                                '<div class="form-group" >' +
+                                                '<label>View Name</label>' +
+                                                '<input value="' + (obj.viewname ? obj.viewname : '') + '" name="viewname' + index + '" id="viewname' + index + '"  type="text"  maxlength="128" class="viewname form-control--active form-control form-control-lg " />' +
+
+                                                '</div>' +
+
+                                                '</div>' +
+                                                '</div>' +
+                                                '<div class="user-check">' +
+                                                '<div class="col-sm-6 col-xs-12 p-4 authorized_craftmyapp_container">' +
+                                                '<div>' +
+                                                '<div class="form-group">' +
+                                                '<div>' +
+                                                '<label>' +
+                                                authorized +
+                                                '</label>' +
+
+                                                '</div>' +
+
+                                                '</div>' +
+                                                '</div>' +
+                                                '</div>' +
+                                                '<div class="col-sm-6 col-xs-12 p-2 actiondisplayname_craftmyapp_container">' +
+                                                '<div>' +
+                                                '<div class="form-group" >' +
+                                                '<label value="' + (obj.actiondisplayname ? obj.actiondisplayname : '') + '" name="actiondisplayname' + index + '" id="actiondisplayname' + index + '"  type="text"  maxlength="128" class="actiondisplayname form-control--active form-control-lg  "readonly >' + (obj.actiondisplayname ? obj.actiondisplayname : '') + '</label>' +
+
+                                                '</div>' +
+
+                                                '</div>' +
+                                                '</div>' +
+                                                '</div>' +
+                                                '<div class="col-sm-3 col-xs-12 p-2 viewactionroles_craftmyapp_container" hidden>' +
+                                                '<div>' +
+                                                '<div class="form-group" >' +
+                                                '<label class="view-action-role">View Action Roles</label>' +
+                                                '<input value="' + (obj.viewactionroles ? obj.viewactionroles.replace(/^,|,$/g, '') : '') + '" name="viewactionroles' + index + '" id="viewactionroles' + index + '"  type="text"  maxlength="128" class="viewactionroles form-control--active form-control form-control-lg " />' +
+
+                                                '</div>' +
+
+                                                '</div>' +
+                                                '</div>' +
+
+                                                '</div></div>'
+
+                                            );
+
+                                        }
+
+                                        $(".roleauthorized_craftmyapp_container").hide()
+
+
+
+                                    });
+                                },
+                                error: function (jqXHR, textStatus, errorThrown) {
+                                    if (JSON.stringify(jqXHR.responseText) == "\"API Authorization failed\"" || jqXHR.responseJSON.error == "Failed to negotiate with server") {
+                                        swal({
+                                            title: 'Failed!',
+                                            text: (jqXHR.responseJSON.error ? jqXHR.responseJSON.error : jqXHR.responseText),
+                                            type: 'error',
+                                            buttonsStyling: false,
+                                            confirmButtonClass: 'btn btn-primary',
+                                            allowOutsideClick: false
+                                        }).then(function () {
+                                            window.location = "@Url.Action("AuthorizationFailed", "users")"
+                                        })
+                                    }
+                                    else {
+                                        swal({
+                                            title: 'Contact Administrator !',
+                                            text: (jqXHR.responseJSON.error ? jqXHR.responseJSON.error : jqXHR.responseText),
+                                            type: 'error',
+                                            buttonsStyling: false,
+                                            confirmButtonClass: 'btn btn-primary'
+                                        })
+                                    }
+                                }
+                            })
+                        }
+                        $(document).ready(function () {
+                            fill_userrole()
+                            fill_parentname()
+
+                            $("#userrole").change(function () {
+
+                                fill_authorization();
+
+                            })
+                            $('body').on('click', '.authorizedCheckbox', function (e) {
+
+                                var clickedElementId = $(this).attr("id");
+
+                                var numericPortion = clickedElementId.match(/\d+/)[0];
+
+                                var alertneeded = $("#authorized" + numericPortion).prop("checked")
+
+                                if (alertneeded) {
+
+                                    var viewnameId = "#viewname" + numericPortion;
+
+                                    var controllername = $("#controllername" + numericPortion).val();
+
+
+                                    const viewnameInputs = $("#card-body" + controllername + " .viewname");
+
+                                    viewnameInputs.each(function (index, element) {
+                                        const value = $(element).val();
+
+                                        if (value == "list") {
+                                            const listId = $(this).attr("id");
+                                            var numericPart = listId.match(/\d+/)[0];
+                                            var authorizedval = $("#authorized" + numericPart).prop("checked")
+
+                                            if (!authorizedval) {
+                                                swal({
+                                                    title: 'Please allow access for list before authorizing for any other actions',
+                                                    text: "Please check your entry",
+                                                    type: 'warning',
+                                                    buttonsStyling: false,
+                                                    confirmButtonClass: 'btn btn-primary'
+                                                })
+                                                var removechecked = '#' + clickedElementId
+
+                                                $("#authorized" + numericPart).prop("checked", true);
+                                            }
+                                            //else{
+                                            //        $("#authorized" + numericPart).prop("disabled", true);
+                                            //}
+
+                                        }
+                                    });
+                                }
+                            });
+
+
+
+                        })
+                    </script>
+
+
+                    <!--fieldsEndsHere-->
+                </div><!--field_container_row-->
+
+
+                <div class="card-block">
+                    <!--form_button_card_block-->
+                    <button type="button" onclick="window.history.back()" class="btn btn-secondary cma_cancel_button waves-effect">Cancel</button>
+                    <button type="button" id="btnSubmit" class="btn cma_primary_button  waves-effect pull-right">Update</button>
+                </div><!--form_button_card_block-->
+
+
+            </div><!--form_inner_card_block-->
+        </div><!--form_inner_card-->
+    </div>
+
+    <!--Form_Main_Card-->
+}<!--EndFORM-->
+<script>
+    $(document).ready(function () {
+        $('body').on('keyup', '.dt-global-search', function () {
+            var searchText = $(this).val().toLowerCase();
+            var count = 0;
+            var count1 = 0;
+            var allHidden = true; // Flag to track if all parents(5) are hidden
+            $('.body-visible').each(function () {
+                $(this).removeClass("body-visible");
+            });
+            $('.actiondisplayname').each(function () {
+                var cardHeaderText = $(this).text().toLowerCase();
+                count++;
+                console.log(cardHeaderText);
+                console.log(searchText);
+                if (cardHeaderText.indexOf(searchText) !== -1) {
+                    $(this).parents().eq(6).addClass("body-visible");
+                    $(this).parents().eq(6).show();
+                    $(this).parents().eq(7).show();
+                    $(this).parents().eq(7).find('#minus').show();
+                    $(this).parents().eq(7).find('#plus').hide();
+                    $(this).parents().eq(8).show();
+                } else {
+                    var className = $(this).parents().eq(6).attr("class");
+                    if (className.indexOf("body-visible") !== -1) {
+                        $(this).parents().eq(6).show();
+                    }
+                    else {
+                        $(this).parents().eq(6).hide();
+                    }
+
+                    count1++;
+
+
+                }
+
+                var cardBody = $(this).parents().eq(7).find('.card-body:visible');
+                if (cardBody.length > 0) {
+                    console.log("not hidden");
+                    $(this).parents().eq(7).show();
+                    $(this).parents().eq(7).find('#minus').show();
+                    $(this).parents().eq(7).find('#plus').hide();
+                    $(this).parents().eq(8).show();
+                }
+                else {
+                    $(this).parents().eq(7).hide();
+                    $(this).parents().eq(8).hide();
+                }
+
+
+            });
+
+            if (count == count1) {
+                $('.search-err').css('display', 'block');
+
+            } else {
+                $('.search-err').css('display', 'none');
+            }
+        });
+
+    });
+</script>
+
+<script>
+    $(document).ready(function () {
+        $('body').on('click', '.roleaccordian', function (e) {
+            var hasActiveClass = $(this).hasClass("active");
+            var id = $(this).attr("id");
+            var minusIcon = $('#' + id + ' #minus');
+            var plusIcon = $('#' + id + ' #plus');
+            var minusText = $('#' + id + ' #minustext');
+            var plusText = $('#' + id + ' #plustext');
+
+
+            minusIcon.css('display', minusIcon.css('display') === 'none' ? 'inline-block' : 'none');
+            plusIcon.css('display', plusIcon.css('display') === 'none' ? 'inline-block' : 'none');
+            minusText.css('display', minusText.css('display') === 'none' ? 'inline-block' : 'none');
+            plusText.css('display', plusText.css('display') === 'none' ? 'inline-block' : 'none');
+
+
+            var featuregroup = id.replace('roleaccordian', '');
+            var allcardbodyid = "#allcardbody-container" + featuregroup;
+            var cardbodyid = $(allcardbodyid).find('.card-body');
+            if (hasActiveClass) {
+
+                this.classList.toggle("active");
+
+
+
+                var cardbody = $(cardbodyid);
+                cardbody.css('display', cardbody.css('display') === 'none' ? 'block' : 'none');
+
+            } else {
+
+                this.classList.toggle("active");
+
+
+                var cardbody = $(cardbodyid);
+                cardbody.css('display', cardbody.css('display') === 'none' ? 'block' : 'none');
+            }
+
+
+
+
+
+
+        });
+
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        $('body').on('click', '.selectallCheckbox', function (e) {
+            if ($(this).prop('checked')) {
+                $(this).parents().eq(3).find('.authorizedCheckbox').prop('checked', true);
+            } else {
+                $(this).parents().eq(3).find('.authorizedCheckbox').prop('checked', false);
+            }
+        });
+
+
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+
+        var Actions = getAutho("RoleAuthorization", "edit")
+        if (Actions == undefined) {
+            window.location = "@Url.Action("RoleAuthorizationFailed", "users")"
+        }
+
+
+    });
+</script>
+
+<script>
+    var struserrole = '';
+    var strparentname;
+</script>
+
+@if (Model != null)
+{
+
+    if (Model.userrole != null && Model.userrole.ToString() != "")
+    {
+        <script>
+
+            struserrole = "@Model.userrole"
+        </script>
+    }
+}
+else
+{
+    <script>
+
+        struserrole = "";
+    </script>
+}
+
+
+
+
+
+
+
+
+
+<script>
+    $(document).ready(function () {
+        //fillroleauthorized()
+        $(".btn-add-roleauthorized").click(function () {
+
+
+            var index = Math.floor(Math.random() * (100000 - 1 + 1) + 57);
+            $(".roleauthorized").removeClass('showthelables');
+            $(".btn-remove-row-roleauthorized").removeClass('btn-remove-row');
+            $("#roleauthorizedContainer").append(
+                '<div class="col-sm-6 roleauthorized dependentContainerBorder showthelables" id="roleauthorized' + index + '">' +
+                '<div class="row">' +
+                '<div class="col-sm-2 col-xs-12 p-2 roleauthorized_craftmyapp_container" hidden>' +
+                '<div>' +
+                '<div class="form-group" >' +
+                '<label>Role Authorized</label>' +
+                '<input value="' + (obj.roleauthorized ? obj.roleauthorizationid : '') + '" name="roleauthorizationid' + index + '" id="roleauthorizationid' + index + '"  type="connection_prefilled"  maxlength="256" class="roleauthorizationid form-control--active form-control form-control-lg " />' +
+
+                '</div>' +
+
+                '</div>' +
+                '</div>' +
+
+                '<div class="col-sm-2 col-xs-12 p-2 roleauthorized_craftmyapp_container" hidden>' +
+                '<div>' +
+                '<div class="form-group" >' +
+                '<label>Role Authorized</label>' +
+                '<input  name="roleauthorized' + index + '" id="roleauthorized' + index + '"  type="connection_prefilled"  maxlength="256" class="roleauthorized form-control--active form-control form-control-lg " />' +
+
+                '</div>' +
+
+                '</div>' +
+                '</div>' +
+                '<div class="col-sm-2 col-xs-12 p-2 controllername_craftmyapp_container">' +
+                '<div>' +
+                '<div class="form-group" >' +
+                '<label>Controller Name</label>' +
+                '<input  name="controllername' + index + '" id="controllername' + index + '"  type="text"  maxlength="128" class="controllername form-control--active form-control form-control-lg " />' +
+
+                '</div>' +
+
+                '</div>' +
+                '</div>' +
+                '<div class="col-sm-2 col-xs-12 p-2 actionname_craftmyapp_container" hidden>' +
+                '<div>' +
+                '<div class="form-group" >' +
+                '<label class="action-name-label">Action Name</label>' +
+                '<input  name="actionname' + index + '" id="actionname' + index + '"  type="text"  maxlength="128" class="actionname form-control--active form-control form-control-lg " />' +
+
+                '</div>' +
+
+                '</div>' +
+                '</div>' +
+                '<div class="col-sm-2 col-xs-12 p-2 actionmethodname_craftmyapp_container">' +
+                '<div>' +
+                '<div class="form-group" >' +
+                '<label>Action Method Name</label>' +
+                '<input  name="actionmethodname' + index + '" id="actionmethodname' + index + '"  type="text"  maxlength="128" class="actionmethodname form-control--active form-control form-control-lg " />' +
+
+                '</div>' +
+
+                '</div>' +
+                '</div>' +
+                '<div class="col-sm-2 col-xs-12 p-2 viewname_craftmyapp_container" hidden>' +
+                '<div>' +
+                '<div class="form-group" >' +
+                '<label>View Name</label>' +
+                '<input  name="viewname' + index + '" id="viewname' + index + '"  type="text"  maxlength="128" class="viewname form-control--active form-control form-control-lg " />' +
+
+                '</div>' +
+
+                '</div>' +
+                '</div>' +
+                '<div class="col-sm-2 col-xs-12 p-2 actiondisplayname_craftmyapp_container">' +
+                '<div>' +
+                '<div class="form-group" >' +
+                '<label value="' + (obj.actiondisplayname ? obj.actiondisplayname : '') + '" name="actiondisplayname' + index + '" id="actiondisplayname' + index + '"  type="text"  maxlength="128" class="actiondisplayname form-control--active form-control-lg  "readonly >' + (obj.actiondisplayname ? obj.actiondisplayname : '') + '</label>' +
+
+                '</div>' +
+
+                '</div>' +
+                '</div>' +
+                '<div class="col-sm-2 col-xs-12 p-2 viewactionroles_craftmyapp_container" hidden>' +
+                '<div>' +
+                '<div class="form-group" >' +
+                '<label  class="view-action-role">View Action Roles</label>' +
+                '<input  name="viewactionroles' + index + '" id="viewactionroles' + index + '"  type="text"  maxlength="128" class="viewactionroles form-control--active form-control form-control-lg " />' +
+
+                '</div>' +
+
+                '</div>' +
+                '</div>' +
+                '<div class="col-sm-2 col-xs-12 p-4 authorized_craftmyapp_container">' +
+                '<div>' +
+
+                '<label>Authorized</label>' +
+                '<div class="form-group">' +
+                '<div>' +
+                '<label class="switch">' +
+                '<input type="checkbox" name="authorized' + index + '" id="authorized' + index + '" class = "authorized " />' +
+                '<span class="slider round"></span>' +
+                '</label>' +
+                '</div>' +
+                '</div>' +
+
+                '</div>' +
+                '</div>' +
+
+
+                ' <div class="col-sm-1"><button type="button" class="btn removebtn' + index + ' btn-danger btn-remove-row btn-remove-row-roleauthorized"><span class="fa fa-times"></span></button></div>' +
+                '</div>' + '</div>'
+            );
+
+
+
+        });
+        $('body').on('click', '.btn-remove-row-roleauthorized', function (e) {
+            $(this).parent().parent().remove();
+            $(".roleauthorized").removeClass('showthelables');
+            $(".btn-remove-row-roleauthorized").removeClass('btn-remove-row');
+            var cmafirstcontainer = $('.roleauthorizedContainer :first-child').attr("id")
+            $('#' + cmafirstcontainer).addClass('showthelables');
+            $('.removebtn' + cmafirstcontainer.replace('roleauthorized', '')).addClass('btn-remove-row');
+        });
+    })
+
+</script>
+
+
+
+<script>
+    function getroleauthorized() {
+
+        $("#roleauthorized").val("");
+        var roleauthorizedModel = [];
+
+
+
+        var el = $('.roleauthorizedContainer .roleauthorized_');
+
+        el.each(function (cnt) {
+
+            roleauthorizedAttributes = {}
+
+            roleauthorizedAttributes['RoleAuthorization_roleauthorizedid'] = ($(this).find('.roleauthorizationid').val() ? $(this).find('.roleauthorizationid').val().toString() : '')
+            roleauthorizedAttributes['roleauthorized'] = ($('#userrole').val().toString())
+            roleauthorizedAttributes['controllername'] = ($(this).find('.controllername').val() ? $(this).find('.controllername').val().toString() : '')
+            roleauthorizedAttributes['actionname'] = ($(this).find('.actionname').val() ? $(this).find('.actionname').val().toString() : '')
+            roleauthorizedAttributes['actionmethodname'] = ($(this).find('.actionmethodname').val() ? $(this).find('.actionmethodname').val().toString() : '')
+            roleauthorizedAttributes['viewname'] = ($(this).find('.viewname').val() ? $(this).find('.viewname').val().toString() : '')
+            roleauthorizedAttributes['actiondisplayname'] = ($(this).find('.actiondisplayname').text() ? $(this).find('.actiondisplayname').text().toString() : '')
+            roleauthorizedAttributes['viewactionroles'] = ($(this).find('.viewactionroles').val() ? $(this).find('.viewactionroles').val().toString() : '')
+            var isChecked = $(this).find('.authorizedCheckbox').prop('checked');
+            var result = isChecked ? "true" : "false";
+            roleauthorizedAttributes['authorized'] = result
+            roleauthorizedAttributes['craftmyapp_actionmethodname'] = 'Update_RoleAuthorization'
+            roleauthorizedAttributes['cma_client_row_id'] = $(this).attr("id").replace("roleauthorized", "")
+
+            roleauthorizedModel.push(roleauthorizedAttributes);
+
+
+
+
+        });
+
+
+        //var jsonroleauthorized = JSON.stringify(roleauthorizedModel);
+        //$("#roleauthorized").val(jsonroleauthorized);
+        return roleauthorizedModel
+
+
+    }
+
+
+</script>
+
+<script>
+    $(document).ready(function () {
+
+
+        $('#formId').validate({
+            highlight: function (element) {
+                $(element).closest('.form-group').addClass('has-error');
+                $(element).closest('.form-group').removeClass('has-success');
+                $(element).addClass('form-control-error');
+                $(element).removeClass('form-control-success');
+            },
+            unhighlight: function (element) {
+                $(element).closest('.form-group').removeClass('has-error');
+                $(element).closest('.form-group').addClass('has-success');
+                $(element).addClass('form-control-success');
+                $(element).removeClass('form-control-error');
+            },
+            errorElement: 'span',
+            errorClass: 'help-block'
+        });
+
+        var validator = $("#formId").validate({ /* settings */ });
+
+        $("#btnSubmit").click(function () {
+            var continueflag = 0;
+            var listElements = document.querySelectorAll(".viewname");
+
+            for (var i = 0; i < listElements.length; i++) {
+                var value = listElements[i].value;
+                var actionName = listElements[i].getAttribute("name");
+                if (value == 'list') {
+                    var numericPart = actionName.match(/\d+/)[0];
+                    var authorizedval = $("#authorized" + numericPart).prop("checked")
+                    var controllername = $("#controllername" + numericPart).val();
+                    if (!authorizedval) {
+                        const viewnameInputs = $("#card-body" + controllername + " .viewname");
+
+                        viewnameInputs.each(function (index, element) {
+                            const value = $(element).val();
+                            if (value != 'list') {
+                                var nowName = $(this).attr("name");
+                                var numericvalue = nowName.match(/\d+/)[0];
+                                var alertneeded = $("#authorized" + numericvalue).prop("checked")
+                                if (alertneeded) {
+                                    continueflag++;
+
+
+                                }
+
+                            }
+                        });
+                    }
+                }
+
+            }
+            if (continueflag !== 0) {
+                swal({
+                    title: "Before users can create, update, or delete items, they must also be given permission to view the list of items. Remember, this change only affects how the system behaves when using the application. Do you want to go ahead with this?",
+                    icon: "question",
+                    type: "question",
+                    showCancelButton: true,
+                    confirmButtonColor: '#DD6B55',
+                    confirmButtonText: 'Yes, I am sure!',
+                    cancelButtonText: "No, cancel it!",
+                    closeOnConfirm: false,
+                    closeOnCancel: true
+                }).then(function (isConfirmed) {
+                    if (isConfirmed) {
+                        Update_Modify_Role_Authorization();
+                    }
+
+                })
+
+            }
+            else {
+                Update_Modify_Role_Authorization();
+            }
+
+
+        })
+    })
+
+
+</script>
+<script>
+    function Update_Modify_Role_Authorization() {
+
+        console.log("Func");
+
+        var roleauthorizedModel = getroleauthorized()
+
+        if ($("#formId").valid()) {
+            $(".page-loader").show()
+
+            var form = $('#formId')[0];
+            var formdata = new FormData(form);
+
+
+            for (var i = 0; i < roleauthorizedModel.length; i++) {
+                formdata.append("roleauthorized[" + i + "].RoleAuthorization_roleauthorizedid", roleauthorizedModel[i].RoleAuthorization_roleauthorizedid)
+                formdata.append("roleauthorized[" + i + "].roleauthorized", roleauthorizedModel[i].roleauthorized)
+                formdata.append("roleauthorized[" + i + "].cma_client_row_id", roleauthorizedModel[i].cma_client_row_id)
+                formdata.append("roleauthorized[" + i + "].controllername", roleauthorizedModel[i].controllername)
+                formdata.append("roleauthorized[" + i + "].cma_client_row_id", roleauthorizedModel[i].cma_client_row_id)
+                formdata.append("roleauthorized[" + i + "].actionname", roleauthorizedModel[i].actionname)
+                formdata.append("roleauthorized[" + i + "].cma_client_row_id", roleauthorizedModel[i].cma_client_row_id)
+                formdata.append("roleauthorized[" + i + "].actionmethodname", roleauthorizedModel[i].actionmethodname)
+                formdata.append("roleauthorized[" + i + "].cma_client_row_id", roleauthorizedModel[i].cma_client_row_id)
+                formdata.append("roleauthorized[" + i + "].viewname", roleauthorizedModel[i].viewname)
+                formdata.append("roleauthorized[" + i + "].cma_client_row_id", roleauthorizedModel[i].cma_client_row_id)
+                formdata.append("roleauthorized[" + i + "].actiondisplayname", roleauthorizedModel[i].actiondisplayname)
+                formdata.append("roleauthorized[" + i + "].cma_client_row_id", roleauthorizedModel[i].cma_client_row_id)
+                formdata.append("roleauthorized[" + i + "].viewactionroles", roleauthorizedModel[i].viewactionroles)
+                formdata.append("roleauthorized[" + i + "].cma_client_row_id", roleauthorizedModel[i].cma_client_row_id)
+                formdata.append("roleauthorized[" + i + "].authorized", roleauthorizedModel[i].authorized)
+                formdata.append("roleauthorized[" + i + "].cma_client_row_id", roleauthorizedModel[i].cma_client_row_id)
+
+                formdata.append("roleauthorized[" + i + "].craftmyapp_actionmethodname", 'Update_RoleAuthorization')
+            }
+
+
+
+
+
+            $.ajax({
+                url: '@Url.Action("Update_RoleAuthorization")',
+                type: 'POST',
+                enctype: 'multipart/form-data',
+                processData: false,
+                contentType: false,
+                cache: false,
+                data: formdata,
+                success: function (data) {
+
+                    $(".page-loader").hide();
+                    if (data == "Success") {
+                        swal({
+                            title: "Success !!",
+                            text: "Role Authorization Saved Successfully",
+                            icon: "success",
+                            type: "success",
+                            showCancelButton: false,
+                            confirmButtonText: "OK",
+                        }).then(function () {
+                            var Actions_ = getAutho("RoleAuthorization", "edit")
+                            if (Actions_ != undefined) {
+                                var edit_URL = "@Url.Action("entry.viewname", "RoleAuthorization")"
+                                edit_URL = edit_URL.replace("entry.viewname", Actions_.actionmethodname);
+                                var userrole = $("#userrole").val();
+                                edit_URL += "?userrole=" + encodeURIComponent(userrole);
+                                window.location = edit_URL;
+
+                            }
+                        })
+                    }
+                    else {
+                        $(".page-loader").hide();
+                        swal({
+                            title: "Error !!",
+                            text: data,
+
+                            type: "error",
+                            showCancelButton: false,
+                            confirmButtonText: "OK",
+                        })
+
+                    }
+
+
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    if (JSON.stringify(jqXHR.responseText) == "\"API Authorization failed\"" || jqXHR.responseJSON.error == "Failed to negotiate with server") {
+                        swal({
+                            title: 'Failed!',
+                            text: (jqXHR.responseJSON.error ? jqXHR.responseJSON.error : jqXHR.responseText),
+                            type: 'error',
+                            buttonsStyling: false,
+                            confirmButtonClass: 'btn btn-primary',
+                            allowOutsideClick: false
+                        }).then(function () {
+                            window.location = "@Url.Action("AuthorizationFailed", "users")"
+                        })
+                    }
+                    else {
+                        swal({
+                            title: 'Contact Administrator !',
+                            text: (jqXHR.responseJSON.error ? jqXHR.responseJSON.error : jqXHR.responseText),
+                            type: 'error',
+                            buttonsStyling: false,
+                            confirmButtonClass: 'btn btn-primary'
+                        })
+                    }
+                }
+            })
+
+
+
+
+        }
+        else {
+            validator.focusInvalid();
+            swal({
+                title: 'Validation Failed !',
+                text: "Please check your entry",
+                type: 'error',
+                buttonsStyling: false,
+                confirmButtonClass: 'btn btn-primary'
+            })
+        }
+    }
+</script>
+
+<script>
+    $(document).ready(function () {
+
+
+        $("#tenantid").change(function () {
+
+        })
+
+
+    });
+</script>
+
+
+
+
+
+
+
+
+
+
+
